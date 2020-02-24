@@ -2,20 +2,30 @@
 using namespace std;
 
 
-int getRandomNumber(){
+int getRandomNumber(int max_num){
     srand (time(NULL));
-    return rand()%100;
+    return rand()%max_num;
 }
 int main(){
-    auto secret = getRandomNumber();
-    bool gameOver = false;
-    while (!gameOver){
-        int inp;
-        cin >> inp;
-        if (inp > secret){cout << "Too large" << endl;}
-        else if (inp < secret) {cout << "Too small" << endl;}
-        else gameOver = true;
+    bool gameRepeat = true; 
+    while (gameRepeat){
+        auto secret = getRandomNumber(100);
+        bool gameOver = false;
+        while (!gameOver){
+            cout << "Place your bet:";
+            int inp;
+            cin >> inp;
+            if (inp > secret){cout << "Too large" << endl;}
+            else if (inp < secret) {cout << "Too small" << endl;}
+            else gameOver = true;
+        }
+        printf("Guessed Correctly! \n");
+        printf("Would you like to play again? [y/N]");
+        string yesNo;
+        cin >> yesNo;
+        if (yesNo != "y" || yesNo==""){gameRepeat = false;}
+        else printf("Restarting... \n");
     }
-    printf("Guessed Correctly!");
+    printf("Done!");
     return 0;
 }
