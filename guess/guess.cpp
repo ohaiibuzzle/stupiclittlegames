@@ -9,7 +9,8 @@ int getRandomNumber(int max_num){
 int main(){
     bool gameRepeat = true; 
     while (gameRepeat){
-        auto secret = getRandomNumber(100);
+        int max = 1337;
+        auto secret = getRandomNumber(max);
         bool gameOver = false;
         while (!gameOver){
             cout << "Place your bet:";
